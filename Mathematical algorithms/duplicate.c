@@ -1,42 +1,32 @@
+// Programs to Remove Duplicate Elements in an Array entered by User .
 #include<stdio.h>
-#include<conio.h>
 int main()
-{
-    int a[20],z[20];
-    int n;
-    int e=0;
-    int c=0;
-
-    printf("enter size of an array : ");
-    scanf("%d ",&n);
-    int i,j;
+{   int i,n,j,dup;
+    dup=0;
+    int a[10];
+    printf("Enter Size");   //Obtaining the size of Array.
+    scanf("%d",&n);
+    printf("Enter The Array -");  //Obtaining the Array.
     for(i=0;i<n;i++)
-    {
-        scanf("%d",&a[i]);
+    {   scanf("%d",&a[i]);
     }
     for(i=0;i<n;i++)
-    {
-        for(j=0;j<e+1;j++)
-        {
-            if(a[i]==z[j])
-            {
-                c=c+1;
+    {   for(j=i+1;j<=n;j++)
+        {   if(a[i]==a[j])
+            {   dup=j;          // Locating The DUplicate Element.
+                for(int k=dup;k<n;k++)
+                {   a[k]=a[k+1];               //Adjusting the arrys Indexes in order to remove the duplicate element.
+                }
+                n=n-1;
             }
         }
-        if(c==0)
-        {
-            z[e]=a[i];
-            e=e+1;
-        }
-        else
-        {
-            c=0;
-        }
-    }
-        for(j=0;j<e;j++)
-        {
-            printf("%d ",z[j]);
-        }
-        return 0;
 
+    }
+
+    printf("- NEW ARRAY -");
+    for(i=0;i<n;i++)
+    {   printf("%d",a[i]);
+    }
+
+    return 0;
 }
